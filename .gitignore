@@ -1,0 +1,6 @@
+/docs
+/examples/to-download/*.log
+/logs
+/vendor/
+/.idea
+/src/inc.config.php
