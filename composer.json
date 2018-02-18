@@ -1,5 +1,6 @@
 {
     "name": "anytizer/uploader.php",
-    "description": "Easy CLI/PHP APIs to Upload and manage files in Dropbox",
+    "description": "Easy CLI/PHP APIs to Upload and manage files in Dropbox Cloud",
+    "license": "MIT",
     "require": {}
 }
