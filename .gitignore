@@ -5,3 +5,6 @@
 /.idea
 /src/inc.config.php
 /out
+/test/vendor
+/test/inc.config.php
+/src/inc.dropbox.php

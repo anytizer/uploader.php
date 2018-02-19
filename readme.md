@@ -33,11 +33,16 @@ See examples/dropbox/*.php for more details.
  * [upload.php](examples/dropbox/upload.php)
 
 
+## Installation
+
+    composer require anytizer/uploader.php:dev-master
+
+
 ## Configuration
 
     use uploader\config;
     use uploader\dropbox;
-    
+
     $config = new config();
     $config->token = ""; // API Access Token
     $config->path = "/uploads";
@@ -59,7 +64,7 @@ See examples/dropbox/*.php for more details.
 
 ### Deleting a file
 
-	$response = $db->delete("uploaded.jpg");
+    $response = $db->delete("uploaded.jpg");
 
 
 ## Configuration
@@ -82,21 +87,13 @@ Chose the following options.
 
 Then, Generate OAuth 2 API Key with the options:
 
-   * Allow implicit grant: Allow
-   * Generate access token
-   * Copy/Paste it to inc.config.php
-   * (Rename inc.config-sample.php to inc.config.php)
+ * Allow implicit grant: Allow
+ * Generate access token
+ * Copy/Paste it to inc.config.php
+ * (Rename inc.config-sample.php to inc.config.php)
 
 Done. Now create a folder where to upload.
 
  * Create a folder in /uploads
  * 	- settings
  *	- Set folder permission - me only
- *
-
-## Resources
-
-Images and icons used to demonstrated this work were taken from:
-
- * [icons8 - Upload to Cloud](https://icons8.com/icon/48264/upload-to-cloud)
- * [icons8 - Article](https://intercom.help/icons8/is-it-free/can-i-use-icons8-for-free)

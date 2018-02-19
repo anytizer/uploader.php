@@ -51,16 +51,16 @@ final class dropbox extends uploader_abstract implements uploader_interface
 		);
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,"https://content.dropboxapi.com/2/files/upload");
-		curl_setopt($ch, CURLOPT_UPLOAD, true);
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); // Force it, Dropbox does not support PUT
+		curl_setopt($ch, CURLOPT_BUFFERSIZE, 128);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_TIMEOUT, 86400);
 		curl_setopt($ch, CURLOPT_INFILE, $file->pointer());
 		curl_setopt($ch, CURLOPT_INFILESIZE, $file->filesize());
-		curl_setopt($ch, CURLOPT_BUFFERSIZE, 128);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
+		curl_setopt($ch, CURLOPT_UPLOAD, true);
+		curl_setopt($ch, CURLOPT_URL,"https://content.dropboxapi.com/2/files/upload");
 		$response = curl_exec ($ch);
 		curl_close ($ch);
 
@@ -98,6 +98,8 @@ final class dropbox extends uploader_abstract implements uploader_interface
 		 * Extract file names only
 		 */
 		$files = array();
+		
+		if(count($entries["entries"]))
 		foreach($entries["entries"] as $file)
 		{
 			if($file[".tag"]=="file")
@@ -153,13 +155,13 @@ final class dropbox extends uploader_abstract implements uploader_interface
 		);
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,"https://api.dropboxapi.com/2/{$path}");
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($api_args)); // JSON Data
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_TIMEOUT, 200);
-		$response = curl_exec ($ch);
+		curl_setopt($ch, CURLOPT_URL,"https://api.dropboxapi.com/2/{$path}");
+		$response = curl_exec($ch);
 		curl_close ($ch);
 
 		return $response;
@@ -191,16 +193,16 @@ final class dropbox extends uploader_abstract implements uploader_interface
 			$headers = array(
 				"Authorization: Bearer {$this->config->token}",
 				"Content-Type: application/octet-stream",
-				"User-Agent: api-explorer-client",
+				"User-Agent: uploader.php",
 				"Dropbox-API-Arg: {$json}",
 			);
 
 			$ch = curl_init("https://content.dropboxapi.com/2/files/download");
-			curl_setopt($ch, CURLOPT_TIMEOUT, 50);
 			curl_setopt($ch, CURLOPT_FILE, $fp);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_exec($ch);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 200);
+			$response = curl_exec($ch);
 			curl_close($ch);
 
 			$success = fclose($fp);

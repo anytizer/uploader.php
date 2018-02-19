@@ -25,6 +25,7 @@ print_r($json);
 /**
  * Delete all files listed
  */
+if(count($json["entries"]))
 foreach($json["entries"] as $file)
 {
 	$response = $db->delete($file["name"]);

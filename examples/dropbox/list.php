@@ -19,6 +19,7 @@ print_r($json);
  * Extract file names only from the list, including folder names
  */
 $files = array();
+if(count($json["entries"]))
 foreach($json["entries"] as $file)
 {
 	$files[] = $file["name"];

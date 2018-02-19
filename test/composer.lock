@@ -1,0 +1,39 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e0e94c025473d871654eb46818946af0",
+    "packages": [
+        {
+            "name": "anytizer/uploader.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anytizer/uploader.php.git",
+                "reference": "b98b0a97cd3e76eafe33501373ab180bed0a4b19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anytizer/uploader.php/zipball/b98b0a97cd3e76eafe33501373ab180bed0a4b19",
+                "reference": "b98b0a97cd3e76eafe33501373ab180bed0a4b19",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Easy CLI/PHP APIs to Upload and manage files in Dropbox",
+            "time": "2018-02-17T19:50:14+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "anytizer/uploader.php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

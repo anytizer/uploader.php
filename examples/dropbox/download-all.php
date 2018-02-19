@@ -21,6 +21,7 @@ $response = $db->files();
 $json = json_decode($response, true);
 #print_r($json);
 
+if(count($json["entries"]))
 foreach($json["entries"] as $file)
 {
 	/**

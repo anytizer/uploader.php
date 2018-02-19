@@ -1,2 +1,5 @@
 {
+    "require": {
+        "anytizer/uploader.php": "dev-master"
+    }
 }
